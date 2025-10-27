@@ -1,0 +1,87 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const todoInput = document.getElementById('todoInput');
+    const addBtn = document.getElementById('addBtn');
+    const todoList = document.getElementById('todoList');
+    const emptyState = document.getElementById('emptyState');
+    const totalTasksElement = document.getElementById('totalTasks');
+    
+    let tasks = [];
+    
+    // Загрузка задач из localStorage
+    loadTasks();
+    
+    // Функция добавления задачи
+    function addTask() {
+        const taskText = todoInput.value.trim();
+        
+        if (taskText === '') {
+            return;
+        }
+        
+        const task = {
+            id: Date.now(),
+            text: taskText
+        };
+        
+        tasks.push(task);
+        saveTasks();
+        renderTasks();
+        
+        todoInput.value = '';
+        todoInput.focus();
+    }
+    
+    // Функция отрисовки задач
+    function renderTasks() {
+        todoList.innerHTML = '';
+        
+        if (tasks.length === 0) {
+            todoList.appendChild(emptyState);
+            emptyState.style.display = 'block';
+        } else {
+            emptyState.style.display = 'none';
+            
+            tasks.forEach(task => {
+                const todoItem = document.createElement('div');
+                todoItem.className = 'todo-item';
+                
+                todoItem.innerHTML = `
+                    <span class="todo-text">${task.text}</span>
+                `;
+                
+                todoList.appendChild(todoItem);
+            });
+        }
+        
+        updateStats();
+    }
+    
+    // Функция обновления статистики
+    function updateStats() {
+        const totalTasks = tasks.length;
+        totalTasksElement.textContent = `Всего задач: ${totalTasks}`;
+    }
+    
+    // Функция сохранения задач в localStorage
+    function saveTasks() {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    
+    // Функция загрузки задач из localStorage
+    function loadTasks() {
+        const savedTasks = localStorage.getItem('tasks');
+        if (savedTasks) {
+            tasks = JSON.parse(savedTasks);
+            renderTasks();
+        }
+    }
+    
+    // Обработчики событий
+    addBtn.addEventListener('click', addTask);
+    
+    todoInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            addTask();
+        }
+    });
+});

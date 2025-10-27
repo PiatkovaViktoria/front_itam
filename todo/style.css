@@ -1,0 +1,107 @@
+body {
+    background-color: #4a6bff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.header {
+    background-color: #4a6bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.input-section {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.input-section input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.input-section input:focus {
+    outline: none;
+    border-color: #4a6bff;
+}
+
+.input-section button {
+    background-color: #4a6bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.input-section button:hover {
+    background-color: #3a5be0;
+}
+
+.todo-list {
+    padding: 0 20px 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.todo-item:hover {
+    background-color: #eef2ff;
+}
+
+.todo-text {
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+}
+
+.empty-state p {
+    margin-bottom: 15px;
+}
+
+.stats {
+    padding: 15px 20px;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #e0e0e0;
+    color: #666;
+    font-size: 14px;
+}
