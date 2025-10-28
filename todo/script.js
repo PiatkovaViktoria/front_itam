@@ -7,10 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let tasks = [];
     
-    // Загрузка задач из localStorage
     loadTasks();
     
-    // Функция добавления задачи
     function addTask() {
         const taskText = todoInput.value.trim();
         
@@ -31,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         todoInput.focus();
     }
     
-    // Функция отрисовки задач
     function renderTasks() {
         todoList.innerHTML = '';
         
@@ -56,18 +53,15 @@ document.addEventListener('DOMContentLoaded', function() {
         updateStats();
     }
     
-    // Функция обновления статистики
     function updateStats() {
         const totalTasks = tasks.length;
         totalTasksElement.textContent = `Всего задач: ${totalTasks}`;
     }
     
-    // Функция сохранения задач в localStorage
     function saveTasks() {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
     
-    // Функция загрузки задач из localStorage
     function loadTasks() {
         const savedTasks = localStorage.getItem('tasks');
         if (savedTasks) {
@@ -76,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Обработчики событий
     addBtn.addEventListener('click', addTask);
     
     todoInput.addEventListener('keypress', function(e) {
